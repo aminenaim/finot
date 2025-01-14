@@ -2,8 +2,8 @@
     "prettier.enable": false,
     "files.associations": {
         "*.css": "tailwindcss"
-      },
-      "editor.quickSuggestions": {
+    },
+    "editor.quickSuggestions": {
         "strings": "on"
-      }
+    }
 }

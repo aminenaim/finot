@@ -1,5 +1,22 @@
+<script setup lang="ts">
+const input = ref<string>("");
+const runtimeConfig = useRuntimeConfig();
+const send = () => {
+  console.log(runtimeConfig.public.apiUrl);
+};
+</script>
+
 <template>
-  <UButton class="mt-14 ml-14" @click="console.log('Hello Finot')"
-    >Click me!</UButton
-  >
+  <div class="h-screen w-screen">
+    <UContainer
+      class="w-full h-full flex flex-col justify-center items-center pt-24"
+    >
+      <p class="text-center mt-4">{{ input }}</p>
+
+      <div class="absolute w-full max-w-3xl bottom-24 flex gap-4">
+        <UInput v-model="input" placeholder="Type something" class="w-full" />
+        <UButton @click="send()"> Send </UButton>
+      </div>
+    </UContainer>
+  </div>
 </template>

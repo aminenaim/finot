@@ -14,7 +14,9 @@ export default defineNuxtConfig({
 
   modules: ["@nuxt/eslint", "@nuxt/ui", "@nuxt/icon"],
   runtimeConfig: {
-    apiUrl: "",
+    public: {
+      apiUrl: "",
+    },
   },
   ssr: false,
 });
