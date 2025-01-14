@@ -19,7 +19,7 @@ services:
     ports:
       - "3000:3000"
     environment:
-      - NUXT_API_URL=http://localhost:8080
+      - NUXT_PUBLIC_API_URL=http://localhost:3333
 
   db:
     image: mysql:8.0
