@@ -4,6 +4,8 @@ const runtimeConfig = useRuntimeConfig();
 const send = async () => {
   const res = await $fetch("/ai/hello", {
     baseURL: runtimeConfig.public.apiUrl,
+    method: "POST",
+    body: JSON.stringify({ data: input.value }),
   });
   console.log(res);
 };
