@@ -1,8 +1,11 @@
 <script setup lang="ts">
 const input = ref<string>("");
 const runtimeConfig = useRuntimeConfig();
-const send = () => {
-  console.log(runtimeConfig.public.apiUrl);
+const send = async () => {
+  const res = await $fetch("/ai/hello", {
+    baseURL: runtimeConfig.public.apiUrl,
+  });
+  console.log(res);
 };
 </script>
 
