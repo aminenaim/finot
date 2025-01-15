@@ -10,6 +10,7 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 @RestController
 @RequestMapping("/ai")
@@ -18,21 +19,18 @@ public class AIController {
     @Value("${fastapi.url}")
     private String fastApiUrl;
 
-    @PostMapping("/hello")
+    @PostMapping("/request")
     public String hello(@RequestBody HashMap<String, String> data) {
         RestTemplate restTemplate = new RestTemplate();
-        String url = fastApiUrl + "/process-data";
+        String url = fastApiUrl + "/request";
 
-        // Extracting the input data as a string
-        String inputData = data.get("data");
-
-        // Creating the request payload
         Map<String, Object> requestPayload = new HashMap<>();
-        requestPayload.put("data", inputData);  // Send the data as a plain string
+        requestPayload.put("data", data.get("data"));
 
-        ResponseEntity<String> response = restTemplate.postForEntity(url, requestPayload, String.class);
+        ResponseEntity<HashMap> response = restTemplate.postForEntity(url, requestPayload, HashMap.class);
 
-        return response.getBody();
+        // Return the "result" field from the response
+        return Objects.requireNonNull(response.getBody()).get("result").toString();
     }
 
 }
