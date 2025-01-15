@@ -19,7 +19,12 @@ const send = async () => {
       <p class="text-center mt-4">{{ response }}</p>
 
       <div class="absolute w-full max-w-3xl bottom-24 flex gap-4">
-        <UInput v-model="input" placeholder="Type something" class="w-full" />
+        <UInput
+          v-model="input"
+          placeholder="Type something"
+          class="w-full"
+          @keyup.enter="send()"
+        />
         <UButton @click="send()"> Send </UButton>
       </div>
     </UContainer>

@@ -9,13 +9,6 @@ services:
       MYSQL_ROOT_PASSWORD: martine
     ports:
       - "3306:3306"
-  front:
-    build:
-      context: ./front
-    ports:
-      - "3000:3000"
-    environment:
-      - NUXT_PUBLIC_API_URL=http://localhost:3333
   ai:
     build:
       context: ./ai
